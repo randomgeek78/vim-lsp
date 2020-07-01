@@ -884,6 +884,9 @@ endfunction
 function! lsp#get_position(...) abort
     let l:line = line('.')
     let l:char = lsp#utils#to_char('%', l:line, col('.'))
+    if mode() is# 'n'
+	let l:char += 1
+    endif
     return { 'line': l:line - 1, 'character': l:char }
 endfunction
 
